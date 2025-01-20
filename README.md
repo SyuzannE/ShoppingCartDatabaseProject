@@ -1,78 +1,86 @@
-# Online-Shopping-Cart-Database-Project
+Here's a draft for your GitHub README file for the Online Shopping Cart Database project:
 
-You may find more details about this project at my [personal blog](http://www.aaronguan.com/database-project.html)
+---
 
-## ER Diagram
+# Online Shopping Cart Database Project
 
-![image](http://www.aaronguan.com/images/database/ER.PNG)
+## Overview  
+This project is an **Online Shopping Cart Database System**, designed to provide a comprehensive solution for managing user registrations, product searches, shopping cart functionalities, order processing, and delivery address selection. The application integrates **PostgreSQL** for database management and **Java** for GUI development.  
 
-### Entities
+This course project demonstrates practical implementation of database concepts and object-oriented programming techniques while emphasizing user-friendly interface design.  
 
-* User (__userId__, name, phoneNum)
-* Buyer (__userId__)
-* Seller (__userId__)
-* Bank Card (__cardNumber__, userId, bank, expiryDate)
-* Credit Card (__cardNumber__, organization)
-* Debit Card (__cardNumber__)
-* Store (__sid__, name, startTime, customerGrade, streetAddr, city, province)
-* Product (__pid__, sid, name, brand, type, amount, price, colour, customerReview, modelNumber)
-* Order Item (__itemid__, pid, price, creationTime)
-* Order (__orderNumber__, creationTime, paymentStatus, totalAmount)
-* Address (__addrid__, userid, name, city, postalCode, streetAddr, province, contactPhoneNumber)
+## Features  
+- **User Management**:  
+  - Register new users.  
+  - Login functionality with secure user credentials.  
 
-### Relationships
+- **Product Management**:  
+  - Search for products using filters like name, brand, or type.  
+  - Save selected products to the shopping cart.  
 
-* Manage (__userid__, __sid__, SetupTime) (userid ref Seller, sid ref Store)
-* Save to Shopping Cart (__userid__, __pid__, quantity, addtime) (userid ref Buyer, pid ref Product)
-* Contain (__orderNumber__, __itemid__, quantity) (orderNumber ref Order, itemid ref Order Item)
-* Deliver To (__addrid__, __orderNumber__, TimeDelivered) (addrid ref Address, orderNumber ref Order)
-* Payment (__C.cardNumber__, __orderNumber__, payTime) (C.cardNumber ref Credit Card, orderNumber ref Order)
+- **Order Processing**:  
+  - Create and view orders from the shopping cart.  
+  - Add and select delivery addresses.  
+  - Payment integration via credit or debit card.  
 
-## Create Database
+- **Database Management**:  
+  - Create tables and relationships for the entities (e.g., User, Product, Order).  
+  - Insert, modify, and retrieve data efficiently using SQL scripts.  
 
-* [Table.sql](https://github.com/aaronzguan/Online-Shopping-Cart-Database-Project/blob/master/Table.sql): Create tables for entities and relationships above.
-* [Insert.sql](https://github.com/aaronzguan/Online-Shopping-Cart-Database-Project/blob/master/Insert.sql): Insert datas into tables.
-* [Modification.sql](https://github.com/aaronzguan/Online-Shopping-Cart-Database-Project/blob/master/Modification.sql): Modify the data.
+## Database Structure  
+### Entities:  
+1. **User**: Contains user information such as name and phone number.  
+2. **Buyer**: Subclass of User.  
+3. **Seller**: Subclass of User.  
+4. **Bank Card**: Stores credit or debit card details.  
+5. **Store**: Represents sellers’ stores.  
+6. **Product**: Includes details like brand, price, and customer reviews.  
+7. **Order Item**: Tracks individual items in an order.  
+8. **Order**: Manages overall order information.  
+9. **Address**: Stores user delivery addresses.  
 
-## Java GUI
+### Relationships:  
+- **Manage**: Links Sellers to Stores.  
+- **Save to Shopping Cart**: Connects Buyers with Products.  
+- **Contain**: Tracks Order Items in an Order.  
+- **Deliver To**: Associates Orders with Addresses.  
+- **Payment**: Links Orders with Bank Cards.  
 
-[simpleJDBCPostgres.java](https://github.com/aaronzguan/Online-Shopping-Cart-Database-Project/blob/master/simpleJDBCPostgres.java) is only a sample Java to link the Postgresql JDBC driver and connect to the database for your reference.
+## File Descriptions  
+1. **Table.sql**: Script to create tables and define relationships.  
+2. **Insert.sql**: Script to populate tables with sample data.  
+3. **Modification.sql**: Script to modify or update data in tables.  
+4. **Java_GUI**: Contains Java files for GUI components:  
+   - `MainFrame.java`: Main menu for navigating application features.  
+   - `Register.java`: User registration interface.  
+   - `Login.java`: Login functionality.  
+   - `SearchFrame.java`: Product search page.  
+   - `SaveToCartFrame.java`: Shopping cart management.  
+   - `SetUpOrderFrame.java`: Create orders from the shopping cart.  
+   - `AddressFrame.java`: Manage delivery addresses and finalize orders.  
 
-[SQL.java](https://github.com/aaronzguan/Online-Shopping-Cart-Database-Project/blob/master/Java_GUI/SQL.java) is the acutal program that we wrote to submit the sql execution to the database based on the sample above.
+## Technologies Used  
+- **Java**: GUI and application logic.  
+- **PostgreSQL**: Relational database for managing entities and relationships.  
+- **JDBC**: Database connectivity.  
 
-[Java_GUI](https://github.com/aaronzguan/Online-Shopping-Cart-Database-Project/tree/master/Java_GUI) contains the Java programs for creating the GUI.
+## Getting Started  
+1. **Set up the database**:  
+   - Run `Table.sql` to create database tables.  
+   - Use `Insert.sql` to populate the tables with sample data.  
 
-1. [MainFrame.java](https://github.com/aaronzguan/Online-Shopping-Cart-Database-Project/blob/master/Java_GUI/MainFrame.java): Provide main menu for user to choose different function.
+2. **Run the application**:  
+   - Compile and run Java files in the `Java_GUI` directory.  
+   - Follow the interfaces to register users, search products, and manage orders.  
 
-![image](http://www.aaronguan.com/images/database/MainFrame.png)
+## Future Enhancements  
+- Integration of payment gateways for live transactions.  
+- Enhanced product filtering and sorting options.  
+- Improved UI/UX with modern design principles.  
 
-2. [Register.java](https://github.com/aaronzguan/Online-Shopping-Cart-Database-Project/blob/master/Java_GUI/Register.java): User registration interface.
+## License  
+This project is for educational purposes and follows [MIT License](LICENSE).  
 
-![image](http://www.aaronguan.com/images/database/Register.png)
+---
 
-3. [Login.java](https://github.com/aaronzguan/Online-Shopping-Cart-Database-Project/blob/master/Java_GUI/Login.java): User log-in interface.
-
-![image](http://www.aaronguan.com/images/database/Login.png)
-
-4. [AddAddress.java](https://github.com/aaronzguan/Online-Shopping-Cart-Database-Project/blob/master/Java_GUI/AddAddress.java): Add address for delivery.
-
-![image](http://www.aaronguan.com/images/database/Add%20Addr.png)
-
-5. [SearchFrame.java](https://github.com/aaronzguan/Online-Shopping-Cart-Database-Project/blob/master/Java_GUI/SearchFrame.java):Search products in database.
-
-![image](http://www.aaronguan.com/images/database/Search%20Prod.png)
-
-6. [SaveToCartFrame.java](https://github.com/aaronzguan/Online-Shopping-Cart-Database-Project/blob/master/Java_GUI/SaveToCartFrame.java): Add products into shopping cart.
-
-![image](http://www.aaronguan.com/images/database/Add%20to%20cart.png)
-
-7. [SetUpOrderFrame.java](https://github.com/aaronzguan/Online-Shopping-Cart-Database-Project/blob/master/Java_GUI/SetUpOrderFrame.java): View the shopping cart and create the order.
-
-![image](http://www.aaronguan.com/images/database/View%20Shoppingcart.png)
-
-8. [addressFrame.java](https://github.com/aaronzguan/Online-Shopping-Cart-Database-Project/blob/master/Java_GUI/addressFrame.java): Select a delivery address and finish the shopping.
-
-![image](http://www.aaronguan.com/images/database/Select%20Addr.png)
-
-
-
+Would you like me to modify or expand this further?
