@@ -1,7 +1,3 @@
-Here's a draft for your GitHub README file for the Online Shopping Cart Database project:
-
----
-
 # Online Shopping Cart Database Project
 
 ## Overview  
