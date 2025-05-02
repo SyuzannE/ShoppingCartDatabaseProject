@@ -14,6 +14,7 @@ RETURN v_amount;
 CLOSE C1;
 END
 $$
+	
 
 -- EXECUTE
 SELECT fun1(8,'Microsoft');
